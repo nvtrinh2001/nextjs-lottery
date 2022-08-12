@@ -1,34 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Lottery
 
-## Getting Started
+Next.js Lottery is a frontend application for the Smart Contract Lottery project. This project allows players to enter the raffle, and the winner, which will be chosen randomly, will get all the prize.
 
-First, run the development server:
+# Quick Overview
 
-```bash
-npm run dev
-# or
+Using [Next.js Framework](https://nextjs.org/) to build the interface, along with [Tailwindcss](https://tailwindcss.com/).
+
+[Moralis](https://docs.moralis.io/) is used to make developing websites easier for developers, and create more functionalities.
+
+Introduction to [web3uikit](https://github.com/web3ui/web3uikit), a Web3 library with beautiful and lightweight UI components.
+
+Hosting the application on [IPFS](https://ipfs.tech/) manually, then using [Fleek](fleek.co) to do it with the help of Filecoin.
+
+# Getting Started
+
+## Requirements
+
+-   git
+-   Node.js
+-   yarn
+
+## Quick Start
+
+```
+git clone git@github.com:nvtrinh2001/nextjs-lottery.git
+cd nextjs-lottery
+yarn
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Usage
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**1. Run your local blockchain of the Smart Contract Lottery code**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Open a different terminal:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+git clone git@github.com:nvtrinh2001/hardhat-lottery.git
+cd hardhat-lottery
+yarn
+yarn hardhat node
+```
 
-## Learn More
+You can see more of the code in [this repository](https://github.com/nvtrinh2001/hardhat-lottery).
 
-To learn more about Next.js, take a look at the following resources:
+**2. Add your local hardhat network to your Metamask**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Get the RPC_URL of your hardhat network (shown in the terminal)
+-   Go to your wallet and create a new network:
+    -   name: hardhat-localhost
+    -   RPC_URL: RPC_URL
+    -   chain ID: 31337
+    -   currency symbol: ETH
+-   Import one of the accounts that hardhat gives you (shown in the terminal)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**3. Run the frontend application**
 
-## Deploy on Vercel
+Open the `nextjs-lottery` terminal:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+yarn dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Your application will run on:
+
+```
+localhost:3000
+```
+
+# Deploy to IPFS
+
+**1. Build your static code**
+
+```
+yarn build
+```
+
+**2. Export your code**
+
+```
+yarn next export
+```
+
+**3. Deploy to IPFS**
+
+Make sure you have IPFS extension. See several options that IPFS provides [here](https://ipfs.tech/)
+
+Import _out_ folder into IPFS and pin it
+
+Copy the CID of the folder
+
+Your application will run on:
+
+`ipfs://YOUR_CID`
+
+# Deploy using Fleek
+
+[Fleek](fleek.co) is an easy tool to host your decentralized website. Go to its website and do as the instructions.
